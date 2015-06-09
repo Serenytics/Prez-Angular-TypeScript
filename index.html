@@ -1,411 +1,582 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+    <title>Feedback: AngularJS + TypeScript at Serenytics</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+    <meta name="description" content="The Why, the HowTo and the Good/Bad/Ugly parts of using TypeScript with AngularJs">
+    <meta name="author" content="Adrien Chauve">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
 
-	<body>
 
-		<div class="reveal">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+        ga('create', 'UA-51923804-2', 'auto');
+        ga('send', 'pageview');
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+    </script>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+</head>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+<body>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+<div class="reveal">
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h2>Feedback</h2>
+            <h3>AngularJS + TypeScript <a href='http://www.serenytics.com'>at Serenytics</a></h3>
+            <p>
+                <small>TypeScript meetup #2 - Paris<br>2015-06-10</small>
+            </p>
+            <p>
+                <small>Adrien Chauve <a href="http://twitter.com/adrienchauve">@adrienchauve</a><br>CTO <a href="http://twitter.com/Serenytics">@Serenytics</a></small>
+            </p>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+            <aside class="notes">
+                <ul>
+                    <li>I'm also a fullstack dev at the m3oment ;-)</li>
+                    <li>Serenytics: early stage startup that buils a SASS in Analytics and BI; go see the website for more</li>
+                    <li>Use AngularJS for our SPA and decided a short time ago to switch to TypeScript</li>
+                    <li>This prez is about our feedback after a few months using Angular+TypeScript</li>
+                </ul>
+            </aside>
+        </section>
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+        <section>
+            <h2>disclaimer</h2>
+            <ul>
+                <li>I'm not a TypeScript expert, nor an AngularJS expert!</li>
+                <li>But it's better if you know some to follow this talk ;-)</li>
+            </ul>
+        </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+        <section>
+            <h2>Contents</h2>
+            <ol>
+                <li><a href="#/part-1">What we do: Dashboards and Widgets</a></li>
+                <li><a href="#/part-2">Why moving to TypeScript?</a></li>
+                <li><a href="#/part-3">Angular + TypeScript: HowTo?</a></li>
+                <li><a href="#/part-4">The Good, the Bad and the Ugly</a></li>
+            </ol>
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+            <aside class="notes">
+                <ul>
+                    <li>First: what we do because it's a key point why we chose to begin the migration to TypeScript</li>
+                </ul>
+            </aside>
+        </section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+        <section>
+            <h2>1. What we do: Dashboards and Widgets</h2>
+        </section>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+        <section>
+            <h3>1. What we do: Dashboards and Widgets</h3>
+            <iframe src="https://app.serenytics.com/viewer/webapps/423c4b62-bd6c-4fb9-aed0-50c56b39303e"
+                    width="100%"
+                    scrolling="no"
+                    frameBorder="0"
+                    style="min-width: 1000px"
+                    class="stretch"></iframe>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+            <aside class="notes">
+                <ul>
+                    <li>Actually we do more than that and there is a big backend part in python but it's out of topic here</li>
+                </ul>
+            </aside>
+        </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+        <section id="part-1">
+            <h3>1. What we do: Dashboards and Widgets</h3>
+            <p><strong>Initial question:</strong></p>
+            <ul>
+                <li>we use AngularJS with lots of different widgets</li>
+                <li>how to reuse as much code as possible?</li>
+                <li>while still being able to tune each widget appearance</li>
+            </ul>
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Service: not enough (factorize logic but not UI interactions)</li>
+                <li>Single generic directive: single template problem</li>
+                <li>Directive composition: a generic base directive plus several small directives to adapt the template and behavior</li>
+                <li>TypeScript to the rescue, and much much more!</li>
+            </ul>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+            <aside class="notes">
+                <ul>
+                    <li>code reuse as opposed to duplicating the code for by instance our ten widgets (=> ten directives, it was the case, at first!)</li>
+                    <li>single directive, we need full customization available for each widget</li>
+                    <li>Problem in directive composition: transclusion, shared isolated scope between several directives, reuse of Controller of other directive is *NOT* straightforward and not worth the pain in my opinion</li>
+                    <li>TypeScript to the rescue: could actually be done in pure ES5 but lot more verbose, and loose all other goodies of TypeSCript</li>
+                </ul>
+            </aside>
+        </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+        <section id="part-2">
+            <h2>2. Why moving to TypeScript?</h2>
+        </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+        <section>
+            <h3>2. Why moving to TypeScript? (1/2)</h3>
+            <ul>
+                <li>Potential good solution to factorize our code (more on that later)</li>
+                <li>All the goodness of ES6 (classes, fat arrow, template strings, soon async/await, ...), plus:</li>
+                <li>statically typed
+                    <ul>
+                        <li>automatic feedback while developing (think gulp/grunt watch)</li>
+                        <li>interfaces! description of complex types (e.g. widget data model) available in a <strong>single place</strong> and not
+                            spread around the code (Angular is really persmissive for models)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-    var nodes = document.querySelectorAll( selector );
+        <section>
+            <h3>2. Why moving to TypeScript? (2/2)</h3>
+            <ul>
+                <li>It's just a Javascript superset, so the migration can be <strong>incremental and smooth</strong>, no need to rewrite the app from scratch</li>
+                <li>really easy integration with Angular (even if a little scary at first)</li>
+                <li>forces to use classes, and then better organize the code (again Angular is really permissive)</li>
+                <li>Angular2 is written in TypeScript: Google + Microsoft are now supporting it</li>
+            </ul>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+            <aside class="notes">
+                <ul>
+                    <li>migration is an iterating process, really crucial as an early-stage startup</li>
+                    <li>classes are also a good way to organize code when you're used to them in your backend programming language like python</li>
+                </ul>
+            </aside>
+        </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
+        <section  id="part-3">
+            <h2>3. Angular + TypeScript: HowTo?</h2>
+        </section>
+
+        <section>
+            <h3>3. Angular + TypeScript: The Basics</h3>
+            <ul>
+                <li>Controller</li>
+                <li>Service</li>
+                <li>Directive</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h3>3. Angular + TypeScript: The Basics - Controllers</h3>
+
+            <p>Using ControllerAs syntax, a controller is just a Class</p>
+<pre><code data-trim>
+    angular
+    .module('my-lib')
+    .controller('LoginController', LoginController);
+
+    $stateProvider
+    .state('login', {
+    url: '/login',
+    templateUrl: 'mylib/auth/login.template.html',
+    controller: 'LoginController',
+    controllerAs: 'vm'
+    })
+</code></pre>
+        </section>
+
+        <section>
+            <h3>3. Angular + TypeScript: The Basics - Controllers</h3>
+
+            <p>Example in ES5:</p>
+<pre class="stretch"><code data-trim>
+    var LoginController = (function () {
+    function LoginController(loginService, $state) {
+    this.loginService = loginService;
+    this.$state = $state;
+    this.invalidCredentials = false;
+
+    if (loginService.isLogged) {
+    $state.transitionTo('home');
     }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+    }
+    LoginController.prototype.login = function () {
+    var _this = this;
+    this.invalidCredentials = false;
+    this.loginService.loginWithCrendentials(this.email, this.password)
+    .catch(function () {
+    _this.invalidCredentials = true;
+    });
+    };
+    return LoginController;
+    })();
+</code></pre>
+        </section>
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+        <section>
+            <h3>3. Angular + TypeScript: The Basics - Controllers</h3>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+            <p>Example in TypeScript: lots of goodness in it</p>
+<pre class="stretch"><code data-trim>
+    class LoginController {
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
+    invalidCredentials = false;
+    email: string;
+    password: string;
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+    constructor(private loginService: ILoginService,
+    private $state: angular.ui.IStateService) {
+    if (loginMgr2.isLogged) {
+    $state.transitionTo('home');
+    }
+    }
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+    login () {
+    this.invalidCredentials = false;
+    this.loginService.loginWithCrendentials(this.email, this.password)
+    .catch(() => {
+    this.invalidCredentials = true;
+    });
+    }
+    }
+</code></pre>
+            <aside class="notes">
+                <ul>
+                    <li>really easy to use TypeScript for controller</li>
+                    <li>force us to use ControllerAs and decouple Controller Class from $scope</li>
+                    <li>ES6 classes -> cleaner</li>
+                    <li>type checked! (+completion +jump to source code: super nice!)</li>
+                </ul>
+            </aside>
+        </section>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+        <section>
+            <h3>3. Angular + TypeScript: The Basics - Services</h3>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+            <p>Just like Controllers:</p>
+<pre class="stretch"><code data-trim>
+    class LoginService {
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+    constructor(private Restangular: restangular.IService) {
+    }
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+    loginWithCrendentials (email: string, password: string) {
+    return this.Restangular.one('api/token')
+    .then((apiData) => {
+    // ... save token
+    // ... transition to 'home' state
+    });
+    }
+    }
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+    angular
+    .module('my-lib')
+    .service(loginService, LoginService);
+</code></pre>
+            <aside class="notes">
+                <ul>
+                </ul>
+            </aside>
+        </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+        <section>
+            <h3>3. Angular + TypeScript: The Basics - Directives</h3>
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+<pre class="stretch"><code data-trim>
+    interface IWidgetDirectiveScope extends ng.IScope {
+    widgetModel: IWidgetModel;
+    }
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+    class WidgetDirective {
+    scope = {
+    widgetModel: '=',
+    };
+    restrict = 'E';
+    replace = true;
+    controllerAs = 'vm'
 
-			</div>
+    templateUrl = 'components/widgets/widget.directive.html';
+    controller = WidgetController;
 
-		</div>
+    link = (scope: IWidgetDirectiveScope,
+    element: ng.IAugmentedJQuery,
+    attrs: ng.IAttributes,
+    controller: WidgetController) => {
+    // ...
+    }
+    }
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    angular.module('my-lib').directive('my-widget', () => {
+    return new WidgetDirective();
+    });
+</code></pre>
+            <aside class="notes">
+                <ul>
+                    <li>not so much work</li>
+                    <li>need to type the scope to take full advantage of TypeScript</li>
+                    <li>open the way to inheritance to factorize simple attributes like restrict, replace, controllerAs, and utils to setup the link function</li>
+                    <li>Thanks to Felix Billon for mentioning the interesting 'bindToController' attribute that is clearly a good choice too :)</li>
+                </ul>
+            </aside>
+        </section>
 
-		<script>
+        <section>
+            <h3>3. Angular + TypeScript: Even more!</h3>
+            <p>ok Angular + TypeScript is cool, but what about code reuse and our initial question?</p>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+            <p>Lots of common behavior between</p>
+            <ul>
+                <li>table widget / value widget (= single cell table)</li>
+                <li>all chart widgets (pie chart, bar chart, curve chart, ...)</li>
+            </ul>
+        </section>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        <section>
+            <h3>3. Angular + TypeScript: Reuse code!</h3>
+            <p><strong>Different ways:</strong></p>
+            <ul>
+                <li>keep the same controller, adapt the template, 2 directives for the same price!</li>
+                <li>inherit base controller to inherit basic behavior exposed to the view (think Mixins when available)
+                    <ul>
+                        <li>refresh state (reload data from API)</li>
+                        <li>error handling</li>
+                        <li>global data filtering</li>
+                        <li>data export</li>
+                    </ul>
+                </li>
+                <li>implement models (e.g. Widgets) as classes completely outside of Angular's world</li>
+            </ul>
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+            <aside class="notes">
+                <ul>
+                    <li>I'm not really comfortable with implementing models as services, as I think service first role is to be singletons, not object constructors</li>
+                </ul>
+            </aside>
+        </section>
 
-		</script>
+        <section>
+            <h3>3. Angular + TypeScript: Our solution for code reuse</h3>
+            <ul>
+                <li>keep directives small and simple, and have several if needed
+                    <ul>
+                        <li>each customized with its own template</li>
+                        <li>with possibly one base directive to factorize $scope features and simple properties (replace, ControllerAs, ...)</li>
+                    </ul>
+                <li>one base controller and several inherited controllers as needed</li>
+                <li>pure TypeScript Widget classes without any Angular dependency (model/business logic)</li>
+            </ul>
+        </section>
 
-	</body>
+        <section id="part-4">
+            <h2>4. The Good, the Bad and the Ugly</h2>
+        </section>
+
+        <section>
+            <h3>4. Angular + TypeScript: The Good Parts</h3>
+
+            <ul>
+                <li>easy integration with Angular, especially with ControllerAs since 1.2</li>
+                <li>even encourage to use best practises for Angular 2 (ControllerAs => Components)</li>
+                <li>incremental migration (superset + gradual typing with any)</li>
+                <li>type infos, type inference and all the good that comes with it</li>
+                <li>Interfaces: all the model in one place!</li>
+                <li>Good debugging experience using source maps with Chrome</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>4. Angular + TypeScript: The Bad Parts (1/2)</h3>
+            <ul>
+                <li>using 3rd party libraries (missing or outdated typed definitions): but not such a great problem</li>
+                <li>dev environment a little more complex (gulp, tsc, tslint, tsd): actually not so much pain</li>
+                <li>a little more work sometimes (adding types, directives more verbose)</li>
+            </ul>
+
+            <aside class="notes">
+                <ul>
+                    <li>example of type definitions with use: angularjs of course, angular-ui, jquery, lodash, momentjs, numeraljs, highcharts, and more with the e2e tests in protractor</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h3>4. Angular + TypeScript: The Bad Parts (2/2)</h3>
+
+            <small>Dealing with class hierarchies: compromise between testability
+                and verbosity
+            </small>
+<pre class="stretch"><code data-trim>
+    class BaseWidgetController {
+    private _data: IData;
+
+    constructor(private globalFilterService: GlobalFilterService /* other dependencies */) { /* ... */}
+
+    filterData () { return this.globalFilterService.applyFilters(this._data); }
+    }
+
+    class TableWidgetController extends BaseWidgetController {
+    constructor(private globalFilterService: GlobalFilterService /* other dependencies */) {
+    super(globalFilterService, ....);
+    }
+    }
+
+    /* less verbose alternative - dangerous */
+    class GlobalFilterService {
+    /* WARNING: bypass Angular DI and make testing more complex */
+    static instance() {
+    angular.element(document.body).injector().get('globalFilterService');
+    }
+    applyFilters(...) {...}
+    }
+
+    class BaseWidgetController {
+    private _data: IData;
+    constructor() {}
+    filterData () { return GlobalFilterService.instance().applyFilters(this._data); }
+    }
+</code></pre>
+            <aside class="notes">
+                <ul>
+                    Compromise between easy testability with mocking and Angular native DI, and simple access to services outside of Angular but more difficult mocking in tests
+                </ul>
+            </aside>
+        </section>
+
+
+        <section>
+            <h3>4. Angular + TypeScript: Ugly Parts?</h3>
+
+            <p>Not really... or maybe</p>
+            <p>when coding e2e tests with Protractor + TypeScript: incompatible Promises types</p>
+
+<pre class="stretch"><code data-trim>
+    // selenimum-webdriver type declaration
+    interface IThenable&lt;T&gt; {
+    then&lt;R&gt;(opt_callback?: (value: T) =&gt; Promise&lt;R&gt;, opt_errback?: (error: any) =&gt; any): Promise&lt;R&gt;;
+    then&lt;R&gt;(opt_callback?: (value: T) =&gt; R, opt_errback?: (error: any) =&gt; any): Promise&lt;R&gt;;
+    }
+
+    // vs. ES6 type declaration
+    interface Thenable&lt;R&gt; {
+    then&lt;U&gt;(onFulfilled?: (value: R) =&gt; U | Thenable&lt;U&gt;, onRejected?: (error: any) =&gt; U | Thenable&lt;U&gt;): Thenable&lt;U&gt;;
+    then&lt;U&gt;(onFulfilled?: (value: R) =&gt; U | Thenable&lt;U&gt;, onRejected?: (error: any) =&gt; void): Thenable&lt;U&gt;;
+    }
+</code></pre>
+
+            <p>Good luck if you use nodejs with<br>Q.denodeify or Bluebird.promisify</p>
+
+            <aside class="notes">
+                <ul>
+                    <li>you get this use case if you want to use Q with protractor for instance</li>
+                    <li>The kind of errors you get can remind you of old times with C++ template metaprogramming ;-)</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h3>Towards Angular 2.0: Angular in TypeScript</h3>
+
+            <p>If you:</p>
+            <ul>
+                <li>have a growing project in Angular 1.X</li>
+                <li>want to invest on it for the next couple of years</li>
+            </ul>
+
+            <p>Do you a favor, <strong>go for TypeScript!</strong><br>
+                Congrats! you'll be half way through the migration to Angular2!</p>
+
+            <p>Angular 2: everything becomes a TypeScript class with annotations (Component, Directive)</p>
+        </section>
+
+        <section>
+            <h3>References</h3>
+
+            <ul>
+                <li><a href="http://www.pluralsight.com/courses/using-typescript-large-angularjs-apps">Using TypeScript for Large AngularJS Applications</a> Course @ Pluralsight</li>
+                <li><a href="http://angular-tips.com/blog/2015/06/why-will-angular-2-rock/">Why Will Angular 2 Rock?</a> by @Foxandxss</li>
+                <li><a href="https://github.com/johnpapa/angular-styleguide">Angular style guide</a> by @john_papa</li>
+                <li><a href="https://github.com/Microsoft/TypeScript/wiki/Roadmap">TypeScript Roadmap</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Questions?</h2>
+
+            <strong>Want to work with us at <a href="http://www.serenytics.com">Serenytics?</a></strong><br>
+            <ul>
+                <li>Interested by Analytics, BI and Startups?</li>
+                <li>Passionate about Angular and TypeScript? Love Python?</li>
+                <li>Come and see me, we're looking for an amazing dev / startuper!</li>
+                <li>Or contact me at <a href="mailto:adrien.chauve@serenytics.com">adrien.chauve@serenytics.com</a></li>
+            </ul>
+
+            <aside class="notes">
+                <ul>
+                    <li>Thanks, I hope you enjoyed the presentation</li>
+                    <li>Any question?</li>
+                </ul>
+            </aside>
+        </section>
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
 </html>
