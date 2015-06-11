@@ -1,9 +1,11 @@
 # Feedback using TypeScript + AngularJS at [Serenytics](http://www.serenytics.com)
 
-Presentation given at the [2nd TypeScript Meetup in Paris](http://www.meetup.com/fr/Paris-Typescript/events/222289286/) in June, 2015.
+[Presentation](http://serenytics.github.io/Prez-Angular-TypeScript
+ ) given at the [2nd TypeScript Meetup in Paris](http://www.meetup.com/fr/Paris-Typescript/events/222289286/) in June, 2015.
 
 
 You can press 's' to see **speaker notes**, it's easier to follow the presentation when you have only the slides.
+Press 'f' for full screen, it renders better.
 
 Contact me if you have any question/suggestion/correction!
 
