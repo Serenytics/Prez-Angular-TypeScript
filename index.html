@@ -199,16 +199,16 @@
 
             <p>Using ControllerAs syntax, a controller is just a Class</p>
 <pre><code data-trim>
-    angular
+angular
     .module('my-lib')
     .controller('LoginController', LoginController);
 
-    $stateProvider
+$stateProvider
     .state('login', {
-    url: '/login',
-    templateUrl: 'mylib/auth/login.template.html',
-    controller: 'LoginController',
-    controllerAs: 'vm'
+        url: '/login',
+        templateUrl: 'mylib/auth/login.template.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
     })
 </code></pre>
         </section>
@@ -218,26 +218,26 @@
 
             <p>Example in ES5:</p>
 <pre class="stretch"><code data-trim>
-    var LoginController = (function () {
+var LoginController = (function () {
     function LoginController(loginService, $state) {
-    this.loginService = loginService;
-    this.$state = $state;
-    this.invalidCredentials = false;
+        this.loginService = loginService;
+        this.$state = $state;
+        this.invalidCredentials = false;
 
-    if (loginService.isLogged) {
-    $state.transitionTo('home');
-    }
+        if (loginService.isLogged) {
+            $state.transitionTo('home');
+        }
     }
     LoginController.prototype.login = function () {
-    var _this = this;
-    this.invalidCredentials = false;
-    this.loginService.loginWithCrendentials(this.email, this.password)
-    .catch(function () {
-    _this.invalidCredentials = true;
-    });
-    };
+        var _this = this;
+        this.invalidCredentials = false;
+        this.loginService.loginWithCrendentials(this.email, this.password)
+            .catch(function () {
+                _this.invalidCredentials = true;
+            });
+        };
     return LoginController;
-    })();
+})();
 </code></pre>
         </section>
 
@@ -246,27 +246,27 @@
 
             <p>Example in TypeScript: lots of goodness in it</p>
 <pre class="stretch"><code data-trim>
-    class LoginController {
+class LoginController {
 
     invalidCredentials = false;
     email: string;
     password: string;
 
     constructor(private loginService: ILoginService,
-    private $state: angular.ui.IStateService) {
-    if (loginMgr2.isLogged) {
-    $state.transitionTo('home');
-    }
+                private $state: angular.ui.IStateService) {
+        if (loginMgr2.isLogged) {
+            $state.transitionTo('home');
+        }
     }
 
     login () {
-    this.invalidCredentials = false;
-    this.loginService.loginWithCrendentials(this.email, this.password)
-    .catch(() => {
-    this.invalidCredentials = true;
-    });
+        this.invalidCredentials = false;
+        this.loginService.loginWithCrendentials(this.email, this.password)
+            .catch(() => {
+                this.invalidCredentials = true;
+            });
     }
-    }
+}
 </code></pre>
             <aside class="notes">
                 <ul>
@@ -289,15 +289,15 @@
     }
 
     loginWithCrendentials (email: string, password: string) {
-    return this.Restangular.one('api/token')
-    .then((apiData) => {
-    // ... save token
-    // ... transition to 'home' state
-    });
-    }
+        return this.Restangular.one('api/token')
+            .then((apiData) => {
+                // ... save token
+                // ... transition to 'home' state
+            });
+        }
     }
 
-    angular
+angular
     .module('my-lib')
     .service(loginService, LoginService);
 </code></pre>
@@ -311,13 +311,13 @@
             <h3>3. Angular + TypeScript: The Basics - Directives</h3>
 
 <pre class="stretch"><code data-trim>
-    interface IWidgetDirectiveScope extends ng.IScope {
+interface IWidgetDirectiveScope extends ng.IScope {
     widgetModel: IWidgetModel;
-    }
+}
 
-    class WidgetDirective {
+class WidgetDirective {
     scope = {
-    widgetModel: '=',
+        widgetModel: '=',
     };
     restrict = 'E';
     replace = true;
@@ -327,16 +327,16 @@
     controller = WidgetController;
 
     link = (scope: IWidgetDirectiveScope,
-    element: ng.IAugmentedJQuery,
-    attrs: ng.IAttributes,
-    controller: WidgetController) => {
-    // ...
+            element: ng.IAugmentedJQuery,
+            attrs: ng.IAttributes,
+            controller: WidgetController) => {
+            // ...
     }
-    }
+}
 
-    angular.module('my-lib').directive('my-widget', () => {
+angular.module('my-lib').directive('my-widget', () => {
     return new WidgetDirective();
-    });
+});
 </code></pre>
             <aside class="notes">
                 <ul>
@@ -434,34 +434,34 @@
                 and verbosity
             </small>
 <pre class="stretch"><code data-trim>
-    class BaseWidgetController {
+class BaseWidgetController {
     private _data: IData;
 
     constructor(private globalFilterService: GlobalFilterService /* other dependencies */) { /* ... */}
 
     filterData () { return this.globalFilterService.applyFilters(this._data); }
-    }
+}
 
-    class TableWidgetController extends BaseWidgetController {
+class TableWidgetController extends BaseWidgetController {
     constructor(private globalFilterService: GlobalFilterService /* other dependencies */) {
-    super(globalFilterService, ....);
+        super(globalFilterService, ....);
     }
-    }
+}
 
-    /* less verbose alternative - dangerous */
-    class GlobalFilterService {
+/* less verbose alternative - dangerous */
+class GlobalFilterService {
     /* WARNING: bypass Angular DI and make testing more complex */
     static instance() {
-    angular.element(document.body).injector().get('globalFilterService');
+        angular.element(document.body).injector().get('globalFilterService');
     }
     applyFilters(...) {...}
-    }
+}
 
-    class BaseWidgetController {
+class BaseWidgetController {
     private _data: IData;
     constructor() {}
     filterData () { return GlobalFilterService.instance().applyFilters(this._data); }
-    }
+}
 </code></pre>
             <aside class="notes">
                 <ul>
@@ -478,17 +478,17 @@
             <p>when coding e2e tests with Protractor + TypeScript: incompatible Promises types</p>
 
 <pre class="stretch"><code data-trim>
-    // selenimum-webdriver type declaration
-    interface IThenable&lt;T&gt; {
+// selenimum-webdriver type declaration
+interface IThenable&lt;T&gt; {
     then&lt;R&gt;(opt_callback?: (value: T) =&gt; Promise&lt;R&gt;, opt_errback?: (error: any) =&gt; any): Promise&lt;R&gt;;
     then&lt;R&gt;(opt_callback?: (value: T) =&gt; R, opt_errback?: (error: any) =&gt; any): Promise&lt;R&gt;;
-    }
+}
 
-    // vs. ES6 type declaration
-    interface Thenable&lt;R&gt; {
+// vs. ES6 type declaration
+interface Thenable&lt;R&gt; {
     then&lt;U&gt;(onFulfilled?: (value: R) =&gt; U | Thenable&lt;U&gt;, onRejected?: (error: any) =&gt; U | Thenable&lt;U&gt;): Thenable&lt;U&gt;;
     then&lt;U&gt;(onFulfilled?: (value: R) =&gt; U | Thenable&lt;U&gt;, onRejected?: (error: any) =&gt; void): Thenable&lt;U&gt;;
-    }
+}
 </code></pre>
 
             <p>Good luck if you use nodejs with<br>Q.denodeify or Bluebird.promisify</p>
