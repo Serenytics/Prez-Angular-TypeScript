@@ -106,7 +106,6 @@
                     width="100%"
                     scrolling="no"
                     frameBorder="0"
-                    style="min-width: 1000px"
                     class="stretch"></iframe>
 
             <aside class="notes">
@@ -551,6 +550,13 @@ interface Thenable&lt;R&gt; {
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
+
+<script type="text/javascript" src="http://static.serenytics.com/js/iframeResizer.min.js"></script>
+<script type="text/javascript">
+    iFrameResize({
+        heightCalculationMethod : 'grow'
+    });
+</script>
 
 <script>
 
